@@ -1,44 +1,50 @@
 package com.solvd.lab.automation.v2.mybatis.dao.impl;
 
 import com.solvd.lab.automation.v2.mybatis.config.SessionFactory;
-import com.solvd.lab.automation.v2.mybatis.dao.CategoryDAO;
+import com.solvd.lab.automation.v2.mybatis.dao.AuthorDAO;
+import com.solvd.lab.automation.v2.mybatis.model.Author;
 import com.solvd.lab.automation.v2.mybatis.model.Category;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
-public class CategoryDAOImpl implements CategoryDAO {
+public class AuthorDAOImpl implements AuthorDAO {
 
-    private final static String namespace = "category_mapper";
+    private final static String namespace = "author_mapper";
 
-    public void create(Category category) {
+    @Override
+    public void create(Author author) {
         SqlSession sqlSession = SessionFactory.getSession();
-        sqlSession.insert(namespace + ".create", category);
+        sqlSession.insert(namespace + ".create", author);
         sqlSession.commit();
         sqlSession.close();
     }
 
-    public Category getById(long id) {
+    @Override
+    public Author getById(long id) {
         SqlSession sqlSession = SessionFactory.getSession();
-        Category cat = sqlSession.selectOne(namespace + ".getById", id);
+        Author a = sqlSession.selectOne(namespace + ".getById", id);
         sqlSession.close();
-        return cat;
+        return a;
     }
 
-    public List<Category> get() {
+    @Override
+    public List<Author> get() {
         SqlSession sqlSession = SessionFactory.getSession();
-        List<Category> cats = sqlSession.selectList(namespace + ".get");
+        List<Author> as = sqlSession.selectList(namespace + ".get");
         sqlSession.close();
-        return cats;
+        return as;
     }
 
-    public void update(Category category) {
+    @Override
+    public void update(Author author) {
         SqlSession sqlSession = SessionFactory.getSession();
-        sqlSession.update(namespace + ".update", category);
+        sqlSession.update(namespace + ".update", author);
         sqlSession.commit();
         sqlSession.close();
     }
 
+    @Override
     public void delete(long id) {
         SqlSession sqlSession = SessionFactory.getSession();
         sqlSession.delete(namespace + ".deleteById", id);

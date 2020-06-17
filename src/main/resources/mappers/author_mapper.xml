@@ -3,6 +3,29 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="author_mapper">
+    <select id="getById" resultMap="author_map">
+        SELECT
+        *
+        FROM author A
+        WHERE A.a_id = #{id}
+    </select>
+    <select id="get" resultMap="author_map">
+        SELECT
+        *
+        FROM author
+    </select>
+    <delete id="deleteById">
+        DELETE FROM author WHERE a_id=#{id}
+    </delete>
+    <insert id="create">
+        INSERT INTO author(a_name) VALUES(#{name})
+    </insert>
+    <update id="update">
+        UPDATE author SET a_name=#{name} WHERE a_id=#{id}
+    </update>
 
-
+    <resultMap id="author_map" type="com.solvd.lab.automation.v2.mybatis.model.Author" autoMapping="false">
+        <id property="id" column="a_id"/>
+        <result property="name" column="a_name"/>
+    </resultMap>
 </mapper>

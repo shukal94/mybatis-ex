@@ -7,6 +7,14 @@ public class Author extends AbstractEntity{
         return name;
     }
 
+    public Author(String name) {
+        this.name = name;
+    }
+
+    public Author() {
+
+    }
+
     public void setName(String name) {
         this.name = name;
     }

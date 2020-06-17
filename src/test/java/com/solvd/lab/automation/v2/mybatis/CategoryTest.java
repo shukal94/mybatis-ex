@@ -22,6 +22,24 @@ public class CategoryTest {
     public void testCategoryGetAll() {
         List<Category> cats = new CategoryService().getAllCategories();
         cats.forEach(e -> LOGGER.info(e.toString()));
-        Assert.assertEquals(cats.size(), 3);
+        Assert.assertTrue(cats.size()!=0);
+    }
+
+    @Test()
+    public void testCategoryDeleteById() {
+        new CategoryService().deleteCategoryById(5);
+    }
+
+    @Test
+    public void testCategoryCreate() {
+        Category category = new Category("gonzo", null);
+        new CategoryService().createCategory(category);
+    }
+
+    @Test
+    public void testCategoryUpdate() {
+        Category cat = new CategoryService().getCategoryById(1);
+        cat.setName("sci-fi");
+        new CategoryService().updateCategory(cat);
     }
 }
