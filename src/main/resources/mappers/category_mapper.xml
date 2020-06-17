@@ -6,13 +6,13 @@
     <select id="getById" resultMap="category_map">
         SELECT
         *
-        FROM category C JOIN item I ON C.c_id=I.i_category_id
+        FROM category C LEFT JOIN item I ON C.c_id=I.i_category_id
         WHERE C.c_id = #{id}
     </select>
     <select id="get" resultMap="category_map">
         SELECT
         *
-        FROM category C JOIN item I ON C.c_id=I.i_category_id
+        FROM category C LEFT JOIN item I ON C.c_id=I.i_category_id
     </select>
     <delete id="deleteById">
         DELETE FROM category WHERE c_id=#{id}
