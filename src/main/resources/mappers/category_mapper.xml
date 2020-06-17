@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="category_mapper">
+    <select id="getById" resultMap="category_map">
+        SELECT
+        *
+        FROM category C
+        WHERE C.c_id = #{id}
+    </select>
+    <select id="get" resultMap="category_map">
+        SELECT
+        *
+        FROM category
+    </select>
+    <resultMap id="category_map" type="com.solvd.lab.automation.v2.mybatis.model.Category" autoMapping="false">
+        <id property="id" column="c_id"/>
+        <result property="name" column="c_name"/>
+    </resultMap>
+
+</mapper>
