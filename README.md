@@ -11,7 +11,7 @@ the example of config
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="your.driver.path"/>
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://localhost:3306/lib?useSSL=false"/>
                 <property name="username" value="uname"/>
                 <property name="password" value="upass"/>
