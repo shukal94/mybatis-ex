@@ -5,9 +5,23 @@
 <mapper namespace="author_mapper">
     <select id="getById" resultMap="author_map">
         SELECT
-        *
-        FROM author A
-        WHERE A.a_id = #{id}
+        a_id as author_id,
+        a_name as author_name,
+
+        i_id as item_id,
+        i_name as item_name
+        FROM
+        author A
+        LEFT JOIN
+        autorship ai
+        ON
+        ai.autor_id = A.a_id
+        LEFT JOIN
+        item i
+        ON
+        i.i_id = ai.item_id
+        WHERE
+        A.a_id = #{id}
     </select>
     <select id="get" resultMap="author_map">
         SELECT
@@ -25,7 +39,8 @@
     </update>
 
     <resultMap id="author_map" type="com.solvd.lab.automation.v2.mybatis.model.Author" autoMapping="false">
-        <id property="id" column="a_id"/>
-        <result property="name" column="a_name"/>
+        <id property="id" column="author_id"/>
+        <result property="name" column="author_name"/>
+        <collection property="items" resultMap="item_mapper.ItemResultMap"/>
     </resultMap>
 </mapper>

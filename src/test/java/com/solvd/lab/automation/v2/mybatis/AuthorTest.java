@@ -34,7 +34,7 @@ public class AuthorTest {
 
     @Test
     public void testAuthorCreate() {
-        Author a = new Author("Hawking");
+        Author a = new Author("Hawking", null);
         new AuthorService().createAuthor(a);
     }
 
