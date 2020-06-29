@@ -22,7 +22,7 @@ public class CategoryTest {
     public void testCategoryGetAll() {
         List<Category> cats = new CategoryService().getAllCategories();
         cats.forEach(e -> LOGGER.info(e.toString()));
-        Assert.assertTrue(cats.size()!=0);
+        Assert.assertTrue(cats.size()== 2);
     }
 
     @Test()
